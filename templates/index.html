@@ -20,7 +20,7 @@
 </head>
 <body background="{{url_for('static', filename = 'Image1.jpg')}}" style = "height: 50rem; background-size: 100% 100%; background-repeat: no-repeat">
     <!-- <h1 style="text-align : center">Enter details!</h1> -->
-<nav class = 'navbar navbar-dark bg-dark navbar-expand-md fixed-top mb-4'>
+<nav class = 'sticky-top navbar navbar-dark bg-dark navbar-expand-md mb-4'>
     <div class="container-fluid ">
     <div class="navbar-header">
       <a class="navbar-brand" href="home">WebSiteName</a>
@@ -37,10 +37,10 @@
   </div>
 </nav>
 
+<div class = 'container'>
 {% block content %}
 {% endblock content %}
-
-<span></span>
+</div>
 <!-- Footer -->
 <footer class="card-footer fixed-bottom font-small bg-dark text-white">
     <!-- Footer Links -->
@@ -54,8 +54,6 @@
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>Tagline of the website.</p>
         </div>
-        <!-- Grid column -->
-        <!-- Grid column -->
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <!-- Links -->
           <h6 class="text-uppercase font-weight-bold">Contact</h6>
