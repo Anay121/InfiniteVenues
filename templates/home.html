@@ -26,7 +26,14 @@
                         <!--end of col-->
                     </div>
 </div>
-
+<div class = 'container'>
+    <div class = 'row justify-content-center'>
+        <button class="w3-button w3-display-left" onclick="">&#10094;</button>
+    
+        <img class="mySlides" src="{{url_for('static', filename = 'Image1.jpg')}}" style="width: 40%; height:40%;">
+        <button class="w3-button w3-display-right" onclick="">&#10095;</button>
+    </div>
+</div>
 {% endblock content %}
 {% block jscripts %}
 <script>
