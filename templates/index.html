@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
+<head style="height: 100%; width: 100%;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,15 +14,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Coming+Soon&effect=outline">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Coming+Soon&effect=outline">
+	{% block head %}
+	{% endblock head %}
 </head>
 <body background="{{url_for('static', filename = 'Image1.jpg')}}" style = "height: 60rem; background-size: 100% 100%; background-repeat: no-repeat">
     <!-- <h1 style="text-align : center">Enter details!</h1> -->
 <nav class = 'sticky-top navbar navbar-dark bg-dark navbar-expand-md mb-4'>
     <div class="container-fluid ">
     <div class="navbar-header">
-      <a class="navbar-brand" href="home">WebSiteName</a>
+      <a class="navbar-brand" href="home">InfiniteVenues</a>
     </div>
     <ul class="nav navbar-nav">
       <li class = "active nav-item"><a class = 'nav-link' href="home">Home</a></li>
@@ -30,7 +34,7 @@
       <li class = 'nav-item'  ><a class="nav-link" href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li class = 'nav-item'><a class = 'nav-link' href="login"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li class = 'nav-item'><a class = 'nav-link' href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li class = 'nav-item'><a class = 'nav-link' href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
@@ -49,7 +53,7 @@
         <!-- Grid column -->
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
-          <h6 class="text-uppercase font-weight-bold">WebsiteName</h6>
+          <h6 class="text-uppercase font-weight-bold">InfiniteVenues</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>Tagline of the website.</p>
         </div>
@@ -91,7 +95,6 @@
   
   </footer>
   <!-- Footer -->
-
 {% block jscripts %}
 {% endblock  jscripts %}
 </body>

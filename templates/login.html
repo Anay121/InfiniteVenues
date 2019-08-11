@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% block content %}
-
+<!-- 57acff lighish azure -->
 <div>
     <div class = 'container p-4 m-4' style="position: relative; top: 100px">
         <div class="row mt-4"> 
@@ -56,11 +56,16 @@
 {% block jscripts %}
 
 <script>
+    let pt = '{{ pageType }}'
+    if(pt.search('login') > -1){
+        $('.signup').hide();
+        $('.sendData').prop('name', 'login');
+    };
     $('.slideToggler').on('click', function(){
         $('.signup').toggle(400);
-        console.log('done');
+        // console.log('done');
         let btnType = $('.sendData').prop('name');
-        console.log(btnType);
+        // console.log(btnType);
         if(btnType == 'login'){
             $('.sendData').prop('name', 'signup');
         }

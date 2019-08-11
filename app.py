@@ -2,9 +2,11 @@ from flask import Flask, render_template, url_for, request
 app = Flask(__name__)
 
 @app.route('/')
+@app.route('/register')
 @app.route('/login')
 def hello_world():
-    return render_template('login.html')
+    print(type(request.url_rule), str(request.url_rule))
+    return render_template('login.html', pageType = str(request.url_rule))
 
 @app.route('/home')
 def home_page():
@@ -17,4 +19,8 @@ def form_data():
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    return render_template('profile2.html')
+
+@app.route('/list')
+def hotel_list():
+    return render_template('hotels.html')
