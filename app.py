@@ -21,6 +21,6 @@ def form_data():
 def profile():
     return render_template('profile2.html')
 
-@app.route('/list')
+@app.route('/hotel')
 def hotel_list():
     return render_template('hotels.html')
