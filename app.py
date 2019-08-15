@@ -16,9 +16,9 @@ def hello_world():
         for i in form:
             userdet[i.name] = i.data
         print(request.form)
-        session['user'] = form
+        session['user'] = userdet
         flash('Registered successfully!')
-        return render_template('login.html', pageType = str(request.url_rule), form = form) 
+        return render_template('login.html', pageType = str(request.url_rule), form = form, userdet = userdet) 
     # print(type(request.url_rule), str(request.url_rule))
     return render_template('login.html', pageType = str(request.url_rule), form = form)
 
@@ -26,10 +26,10 @@ def hello_world():
 def home_page():
     return render_template('home.html')
 
-@app.route('/endpoint', methods = ['POST'])
-def form_data():
-    r = request.form
-    print(r)
+@app.route('/logout')
+def logout():
+    session['user'] = None
+    return redirect(url_for('home_page'))
 
 @app.route('/profile')
 def profile():
