@@ -1,6 +1,11 @@
 {% extends 'index.html' %}
 {% block head %}
 <link rel="stylesheet" href = "{{url_for('static', filename = 'styleprofile.css')}}">
+<style>
+.checked {
+    color:orange;
+}
+</style>
 {% endblock head %}
 
 {% block content %}
@@ -19,12 +24,12 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Sayali Khot
+                                        <p id='hotelname'>Hotel name</p>
                                     </h5>
                                     <h6>
                                         <i class="fa fa-map-marker" style="padding-right: 1%;"></i>Mumbai, India
                                     </h6>
-                                    <p class="proile-rating">CREDITS : <span>8 avs</span></p>
+
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -32,26 +37,24 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-work">
-                            <p></p>
-                            <a href="">Website Link</a><br/>
-                            <a href="">Bootsnipp Profile</a><br/>
-                            <a href="">Bootply Profile</a>
-                            <p>SKILLS</p>
-                            <a href="">Web Designer</a><br/>
-                            <a href="">Web Developer</a><br/>
-                            <a href="">WordPress</a><br/>
-                            <a href="">WooCommerce</a><br/>
-                            <a href="">PHP, .Net</a><br/>
-                        </div>
+                    <div class="col-md-5">
+                        <iframe
+                            id = 'mapsframe'
+                            width="90%"
+                            height="100%"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/place?key={{ key }}&q={{location}}" allowfullscreen>
+                        </iframe>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
@@ -143,9 +146,62 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <div class = 'card'>
+                                    <div class = 'card-body'>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                                                <p class="text-secondary text-center">15 Minutes Ago</p>
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p>
+                                                    <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Some random person</strong></a>
+                                                    <span class="float-right"><i class="fa fa-star" data-rating = 5></i></span>
+                                                    <span class="float-right"><i class="fa fa-star" data-rating = 4></i></span>
+                                                    <span class="float-right"><i class="fa fa-star" data-rating = 3></i></span>
+                                                    <span class="float-right"><i class="fa fa-star" data-rating = 2></i></span>
+                                                    <span class="float-right"><i class="fa fa-star checked" data-rating = 1></i></span>
+                                                </p>
+                                                <div class="clearfix"></div>
+                                                <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                                <p>
+                                                    <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                                                    <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>           
         </div>
 {% endblock content %}
+{% block jscripts %}
+<script>
+    $(function(){
+        // let stars = $('.fa.fa-star');
+        $('.fa.fa-star').on(
+        {
+            mouseenter : function(){
+                let starVal = $(this).data('rating');
+                // console.log('hover:', starVal);
+                $('.fa.fa-star').each(function(){
+                    // console.log($(this).data('rating'));
+                    if($(this).data('rating') <= starVal ){
+                        $(this).addClass('text-warning')
+                    }
+                });
+            },
+            mouseleave : function(){
+                $('.fa.fa-star').each(function(){
+                    $(this).removeClass('text-warning')
+                });      
+            }
+        });
+    });
+</script>
+{% endblock %}
