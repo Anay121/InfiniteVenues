@@ -183,14 +183,11 @@
 {% block jscripts %}
 <script>
     $(function(){
-        // let stars = $('.fa.fa-star');
         $('.fa.fa-star').on(
         {
             mouseenter : function(){
                 let starVal = $(this).data('rating');
-                // console.log('hover:', starVal);
                 $('.fa.fa-star').each(function(){
-                    // console.log($(this).data('rating'));
                     if($(this).data('rating') <= starVal ){
                         $(this).addClass('text-warning')
                     }

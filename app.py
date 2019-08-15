@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, request, redirect, flash
 from models import RegistrationForm
 import os
 app = Flask(__name__)
-# print(os.getenv('MAPS_API'))
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 @app.route('/')
 @app.route('/login', methods = ['GET', 'POST'])
 @app.route('/register', methods = ['GET', 'POST'])
