@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block head %}
+<link rel="stylesheet" href = "{{url_for('static', filename = 'stylelist.css')}}">
+{% endblock head %}
+
+{% block content %}
+<div id="wrapper"> 
+<nav id = 'sidebar'>
+    <div class="sidebar-header">
+        <h3>Bootstrap Sidebar</h3>
+    </div>
+</nav>
+
+<div class="flex-container">
+{% for _ in range(5) %}
+<div class="card flex-item" style="width: 20rem; max-width: 20rem; max-height: 30rem;">
+  <img class="card-img-top" src="{{url_for('static', filename = 'bridge.jpg')}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text" style="max-height: 9em;overflow: auto;">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">More details</a>
+    <a href="#" class="btn btn-primary">Book Now!</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock content %}

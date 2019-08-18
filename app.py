@@ -15,11 +15,10 @@ def hello_world():
         userdet = {}
         for i in form:
             userdet[i.name] = i.data
-        print(request.form)
+        userdet['password'] = bcrypt.generate_password_hash(userdet['password']).decode('utf-8')
         session['user'] = userdet
         flash('Registered successfully!')
-        return render_template('login.html', pageType = str(request.url_rule), form = form, userdet = userdet) 
-    # print(type(request.url_rule), str(request.url_rule))
+        return render_template('login.html', pageType = str(request.url_rule), form = form)
     return render_template('login.html', pageType = str(request.url_rule), form = form)
 
 @app.route('/home')
@@ -36,8 +35,12 @@ def profile():
     return render_template('profile2.html')
 
 @app.route('/hotel')
-def hotel_list():
+def hotel():
     # get location of hotel from database or something
     location = 'Space Needle'
     location = '+'.join(location.split(' '))
     return render_template('hotels.html', key = os.getenv('MAPS_API'), location = location)
+
+@app.route('/list')
+def hotel_list():
+    return render_template('list.html')
