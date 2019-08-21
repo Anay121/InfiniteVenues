@@ -4,7 +4,7 @@ from flask_bcrypt import Bcrypt
 import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-brcypt = Bcrypt(app)
+bcrypt = Bcrypt(app)
 @app.route('/')
 @app.route('/login', methods = ['GET', 'POST'])
 @app.route('/register', methods = ['GET', 'POST'])

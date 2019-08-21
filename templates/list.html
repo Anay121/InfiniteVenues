@@ -4,6 +4,7 @@
 {% endblock head %}
 
 {% block content %}
+
 <div id="wrapper"> 
     <nav id="sidebar">
         <div class="sidebar-header">
@@ -51,7 +52,7 @@
             </li>
         </ul>
     </nav>
-
+<div class="content">
 <div class="flex-container">
 {% for _ in range(5) %}
 <div class="card flex-item" style="width: 20rem; max-width: 20rem; max-height: 30rem;">
@@ -64,6 +65,7 @@
   </div>
 </div>
 {% endfor %}
+</div>
 </div>
 </div>
 {% endblock content %}
