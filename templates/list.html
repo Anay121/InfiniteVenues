@@ -7,11 +7,17 @@
 
 <div class="container-fluid">
 <div class='row'>
-    <div class="col-2 bg-dark">
-
+    <div class="col-2 bg-dark sticky-top" style = "max-height: 88vh; top: 5%">
+        <p class="h3">Apply Filters</p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-primary">Location</li>
+            <li class="list-group-item list-group-item-primary">Price</li>
+            <li class="list-group-item list-group-item-primary">Rating</li>
+            <li class="list-group-item list-group-item-primary">Facilities</li>
+            </ul>
     </div>
 <div class="col-9 flex-container">
-{% for _ in range(5) %}
+{% for _ in range(25) %}
 <div class="card flex-item" style="width: 20rem; max-width: 20rem; max-height: 30rem;">
   <img class="card-img-top" src="{{url_for('static', filename = 'bridge.jpg')}}" alt="Card image cap">
   <div class="card-body">
