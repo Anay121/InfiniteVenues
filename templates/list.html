@@ -7,14 +7,35 @@
 
 <div class="container-fluid">
 <div class='row'>
-    <div class="col-2 bg-dark sticky-top" style = "max-height: 88vh; top: 5%">
+    <div class="col-2 bg-dark sticky-top" style = "top: 5%">
         <p class="h3">Apply Filters</p>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-primary">Location</li>
-            <li class="list-group-item list-group-item-primary">Price</li>
-            <li class="list-group-item list-group-item-primary">Rating</li>
-            <li class="list-group-item list-group-item-primary">Facilities</li>
-            </ul>
+            <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#loc" aria-expanded="false" aria-controls="loc">Location</button>
+            <div class="collapse" id="loc">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+            <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#price" aria-expanded="false" aria-controls="price">Price</button>
+            <div class="collapse" id="price">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+            <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#rating" aria-expanded="false" aria-controls="rating">Rating</button>
+            <div class="collapse" id="rating">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+            <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#facility" aria-expanded="false" aria-controls="facility">Facilities</button>
+            <div class="collapse" id="facility">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+        </ul>
+
     </div>
 <div class="col-9 flex-container">
 {% for _ in range(25) %}
