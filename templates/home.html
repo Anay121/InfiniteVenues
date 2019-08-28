@@ -1,6 +1,15 @@
 {% extends "index.html" %}
 {% block head %}
 <link rel="stylesheet" href = "{{url_for('static', filename = 'css/stylehome.css')}}">
+<style>
+	.select2-selection--single {
+		height:3.25em !important;
+		margin-top:1% !important;
+	}
+	#select2-location-container {
+		text-align:center !important;
+	}
+</style>
 {% endblock head %}
 {% block content %}
 
@@ -95,6 +104,7 @@
 			theme: 'bootstrap',
 			height: 'resolve'
 		});
+		$('#select2-location-container').addClass('text-muted h5');
 	});
     
 	// $(".ui-datepicker-trigger").css('height':'100%', 'width':);
