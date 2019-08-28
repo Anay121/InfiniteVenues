@@ -25,13 +25,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="pricetextf">Min</span>
                         </div>
-                        <input type="text" class="form-control" id="pricemin" aria-describedby="pricetextf">
+                        <input type="text" class="form-control" id="pricemin" aria-describedby="pricetextf" value = 1000>
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="pricetextt">Max</span>
                         </div>
-                        <input type="text" class="form-control" id="pricemax" aria-describedby="pricetextt">
+                        <input type="text" class="form-control" id="pricemax" aria-describedby="pricetextt" value= 10000>
                     </div>
                 </div>
             </div>
@@ -82,8 +82,12 @@
                 $('#pricemin').val($('#slider').slider('values', 0));
                 $('#pricemax').val($('#slider').slider('values', 1))
             }
-
         });
+    });
+    $('#pricemin').on('input', function(){
+        console.log($('#pricemin').val());
+        $( "#slider" ).slider( "option", "values", [ $('#pricemin').val(), $('#pricemax').val()] );
+
     });
     $(function(){
         $('.starrate').on('click', function(){
