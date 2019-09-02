@@ -1,4 +1,5 @@
 FLASK_ENV = development
 SESSION_TYPE = filesystem
+FLASK_APP = app.py
 MAPS_API = AIzaSyBVu62h4DYS5ZyJWRUXjdJjueFczQTJjIc
 SECRET_KEY = MhSVLVwB0SPiUtDPN1f7K469mknnh0ijKChtWEBzIeM
