@@ -7,9 +7,17 @@
 
 <div class="container-fluid">
 <div class='row'>
-    <div class="col-3 bg-dark sticky-top" style = "top: 5%">
-        <p class="h3 m-2 p-2 text-white" style="text-align: center;">Apply Filters</p>
-        <ul class="list-group list-group-flush">
+    <button style="position: fixed; z-index: 10;" id = "sideToggle" class="navbar-toggler m-2" type="button" data-toggle="collapse" data-target="#sideCollapse" aria-controls="sideCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        Open
+    </button>
+    <div class="col-3 bg-dark sticky-top navbar-dark" id = "sideCollapse" style = "top: 5%">
+        <p class="h3 m-2 p-2 text-white" style="text-align: center;">
+            Apply Filters
+            <button class="navbar-toggler" id = "sideClose"  type="button" data-toggle="collapse" data-target="#sideCollapse" aria-controls="sideCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>    
+        </p>
+        <ul class="list-group list-group-flush" style="overflow: hidden;">
             <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#loc" aria-expanded="false" aria-controls="loc">Location</button>
             <div class="collapse" id="loc">
                 <div class="card card-body">
@@ -96,8 +104,15 @@
             $('.text-warning').removeClass('text-warning')
             $(this).children().addClass('text-warning');
             $(this).children().addClass('checked');
-
         });
+    });
+    $(function(){
+        if( window.innerWidth <= 768 ){
+            $('#sideCollapse').addClass('collapse');
+        }            
+        else{
+            $('#sideCollapse').removeClass('collapse');
+        }
     });
 
 </script>

@@ -10,3 +10,12 @@
     margin: 2%;
     flex: 1 1 auto;
 }
+
+@media screen and (min-width: 768px) { 
+    #sideToggle, #sideClose {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+}
