@@ -18,4 +18,15 @@
 }
 
 @media screen and (max-width: 768px) {
+    #sideCollapse {
+        z-index: 11;
+        position: absolute;
+        top:15%!important;
+        left:10%;
+        width: 80%;
+        height: 80%;
+        overflow: auto;
+        padding: 10%;
+        /* background-color: rgba(0,0,0,0.4); */
+    }
 }

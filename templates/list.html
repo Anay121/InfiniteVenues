@@ -57,6 +57,7 @@
             <div class="collapse" id="facility">
                 <div class="card card-body">
                     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
                 </div>
             </div>
         </ul>
@@ -109,10 +110,14 @@
     $(function(){
         if( window.innerWidth <= 768 ){
             $('#sideCollapse').addClass('collapse');
+            $('#sideCollapse').removeClass('col-3')
         }            
         else{
             $('#sideCollapse').removeClass('collapse');
         }
+        $('#sideToggle').on('click', function(){
+            $(document.body).css('background-color', "rgba(0,0,0,0.4)")
+        });
     });
 
 </script>
