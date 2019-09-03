@@ -20,7 +20,7 @@ def hello_world():
             userdet[i.name] = i.data
         userdet['password'] = bcrypt.generate_password_hash(userdet['password']).decode('utf-8')
         session['user'] = userdet
-        flash('Registered successfully!')
+        flash('Registered successfully!', 'success')
         return render_template('login.html', pageType = str(request.url_rule), form = form)
     return render_template('login.html', pageType = str(request.url_rule), form = form)
 
