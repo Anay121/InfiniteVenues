@@ -24,6 +24,10 @@ def hello_world():
         return render_template('login.html', pageType = str(request.url_rule), form = form)
     return render_template('login.html', pageType = str(request.url_rule), form = form)
 
+@app.route('/homenew')
+def new_homepage():
+    return render_template('homenew.html')
+
 @app.route('/home')
 def home_page():
     return render_template('home.html', cities = cities)
