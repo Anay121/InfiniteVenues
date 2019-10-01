@@ -26,7 +26,7 @@ def hello_world():
 
 @app.route('/homenew')
 def new_homepage():
-    return render_template('homenew.html')
+    return render_template('homenew.html', cities = cities)
 
 @app.route('/home')
 def home_page():

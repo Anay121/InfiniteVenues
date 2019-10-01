@@ -20,7 +20,7 @@
 @media screen and (max-width: 768px) {
     #sideCollapse {
         z-index: 11;
-        position: absolute;
+        position: fixed;
         top:15%!important;
         left:10%;
         width: 80%;
