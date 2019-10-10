@@ -7,4 +7,7 @@ class RegistrationForm(Form):
     email = StringField('Email Address:', [validators.Length(min=6, max=35), validators.Email(message='Please enter a valid email')])
     username = StringField('User Name:')
     password = StringField('Password:')
-    # submit = SubmitField('Submit')
+
+class LoginForm(Form):
+    username = StringField('User Name:')
+    password = StringField('Password:')

@@ -80,6 +80,10 @@
         $('.changer').text(changed[i%4])
         i++;
     }, 2000);
+
+    $('.form-control').each(function(){
+        $(this).val('');
+    });
 </script>
 
 {% endblock  jscripts %}
