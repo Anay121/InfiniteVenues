@@ -28,9 +28,6 @@
                             <select class="col-5 m-1 form-control form-control-lg form-control-borderless" style = "width: 41%;" type="search" placeholder="Location" name = 'location' id = 'location'>
                                 {% for city in cities %}
                                 <option value = "{{city}}"> {{city}} </option>
-                                <!-- <option value="AL">Alabama</option>
-                                <option value="BB">Alabaama</option>
-                                <option value="CC">Alabaaama</option>	 -->
                                 {% endfor %}
                             </select>
                             <input class="col-3 mt-1 mb-1 ml-1 form-control form-control-lg form-control-borderless" id = 'FromDate' name = 'fromdate' type="text" placeholder="From" data-provide="datepicker">

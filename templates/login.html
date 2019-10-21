@@ -42,7 +42,7 @@
                                 <input type="submit" class = 'btn btn-primary sendData' style = 'align-self: center' name = 'signup' value = "Submit">
                             </div>
                         </form>
-                        <a class = 'align-middle text-white slideToggler'>Already signed up? Login</a>
+                        <a class = 'align-middle text-white slideToggler togglerText'>Already signed up? Login</a>
                     </div>
                 </div>
         </div>
@@ -61,17 +61,18 @@
     if(pt.search('login') > -1){
         $('.signup').hide();
         $('.sendData').prop('name', 'login');
+        $('.togglerText')[0].innerHTML = 'Want to Register?';
     };
     $('.slideToggler').on('click', function(){
         $('.signup').toggle(400);
-        // console.log('done');
         let btnType = $('.sendData').prop('name');
-        // console.log(btnType);
         if(btnType == 'login'){
             $('.sendData').prop('name', 'signup');
+            $('.togglerText')[0].innerHTML = 'Already signed up? Login';
         }
         else{
             $('.sendData').prop('name', 'login');
+            $('.togglerText')[0].innerHTML = 'Want to Register?';
         }
     });
     let changed = ['Pleasure?', 'Tourism?', 'Work?', 'Fun?'];
@@ -82,7 +83,9 @@
     }, 2000);
 
     $('.form-control').each(function(){
-        $(this).val('');
+        if($('.alert').length == 0){
+            $(this).val('');
+        }
     });
 </script>
 
