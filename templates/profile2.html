@@ -19,7 +19,7 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Sayali Khot
+                                        {{session['user']['fname'].capitalize()+' '+session['user']['lname'].capitalize()}}
                                     </h5>
                                     <h6>
                                         <i class="fa fa-map-marker" style="padding-right: 1%;"></i>Mumbai, India
@@ -51,7 +51,7 @@
                                                 <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti123</p>
+                                                <p>{{session['user']['username']}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -59,7 +59,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                                <p>{{session['user']['fname'].capitalize()+' '+session['user']['lname'].capitalize()}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -67,7 +67,7 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
+                                                <p>{{session['user']['email']}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -75,7 +75,7 @@
                                                 <label>Phone</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>123 456 7890</p>
+                                                <p>{{session['user']['phno']}}</p>
                                             </div>
                                         </div>
                                         <div class="row">

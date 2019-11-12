@@ -1,0 +1,46 @@
+import psycopg2, json
+
+conn = psycopg2.connect("dbname=InfiniteVenues user=postgres password=password")
+cur = conn.cursor()
+with open('hotels', 'r') as f:
+    x = f.read()
+    x = json.loads(x)
+    s = 'insert into hotels values'
+    for i in x:
+        flag = 0
+        print(i)
+        for j in x[i]:
+            if x[i][j] == '\n':
+                flag = 1
+                break
+        if flag == 1:
+            continue
+        a = s+f"({int(i)},'{x[i]['HotelName']}', '{x[i]['Address']}', '{x[i]['City']}', '{x[i]['State']}', {x[i]['MobileNumber']}, {x[i]['PhoneNumber']}, '{x[i]['Email']}', '{x[i]['Category']}', '{x[i]['SubCategory']}', {x[i]['TotalRooms']})"
+        cur.execute(a)
+conn.commit()
+
+Database creation
+
+CREATE table users (
+    user_id serial primary key,
+	fname varchar(1000),
+	lname varchar(1000),
+    email_id   VARCHAR(1000),
+    username   VARCHAR(1000) NOT NULL unique,
+    password   VARCHAR(1000) NOT NULL,
+    contact_no numeric(10,0)
+);
+
+create table hotels(
+	hid serial primary key,
+	h_name varchar(300),
+	address varchar(300),
+	city varchar(300),
+	h_state varchar(200),
+	mobile numeric(15),
+	phoneno numeric(15), 
+	email varchar(100),
+	category varchar(30),
+	subcat varchar(30),
+	rooms integer
+);

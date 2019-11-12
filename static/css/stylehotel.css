@@ -1,21 +1,21 @@
-html *{
+/* html *{
     -webkit-font-smoothing: antialiased;
-}
+} */
 
-.h6, h6 {
+/* .h6, h6 {
     font-size: .75rem !important;
     font-weight: 500;
     font-family: Roboto,Helvetica,Arial,sans-serif;
     line-height: 1.5em;
     text-transform: uppercase;
-}
+} */
 
 .name h6 {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.navbar {
+/* .navbar {
     border: 0;
     border-radius: 3px;
     padding: .625rem 0;
@@ -74,7 +74,7 @@ html *{
     font-size: 12px;
     border-radius: 3px;
     line-height: 20px;
-}
+} */
 
 a .material-icons {
     vertical-align: middle;
