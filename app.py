@@ -35,6 +35,7 @@ def hello_world():
             flash('Registered successfully!', 'success')
         elif not form.validate():
             print(":((((((((()))))))))")
+            flash('Please enter details properly', 'danger')
             # return render_template('login.html', pageType = str(request.url_rule), form = form)
     else:
         form1 = LoginForm(request.form)
@@ -84,17 +85,36 @@ def profile():
 @app.route('/hotel/<abcd>')
 def hotel(abcd):
     print(abcd)
-    cur.execute('Select * from hotels where hid = %s', abcd)
+    cur.execute(f'Select * from hotels where hid = {abcd}')
     hotel_det = list(cur.fetchone())
     for i in range(len(hotel_det)):
         hotel_det[i] = str(hotel_det[i])
     hotel_det = dict(zip(hotel_col, hotel_det))
     print(hotel_det)
+    cur.execute(f"select rtype, price, number_rooms from rooms, h_and_r where h_and_r.hid = {hotel_det['id']} and h_and_r.rid=rooms.rid")
+    rooms = cur.fetchall()
+    print(rooms)
     # get location of hotel from database or something
-    location = 'Space Needle'
+    location = hotel_det['hname']+' '+hotel_det['city']
     location = '+'.join(location.split(' '))
-    return render_template('hotels.html', key = os.getenv('MAPS_API'), location = location, details = hotel_det)
+    print(location)
+    return render_template('hotels.html', key = os.getenv('MAPS_API'), location = location, details = hotel_det, rooms = rooms)
 
-@app.route('/list')
+@app.route('/list', methods = ['GET', 'POST'])
 def hotel_list():
-    return render_template('list.html')
+    loc = 'Location'
+    if request.form:
+        for i in request.form:
+            print(request.form.get(i))
+        loc, to_date, from_date = request.form.get('location'), request.form.get('todate'), request.form.get('fromdate')
+        # print(loc, type(loc))
+        cur.execute(f"select * from hotels where city = '{loc}'")    
+    else:
+        cur.execute("select * from hotels")
+    a = cur.fetchall()
+    hotels_display = []
+    for i in range(len(a))[:20]:
+        a_update = [str(j) for j in a[i]]
+        hotels_display.append(dict(zip(hotel_col, a_update)))
+    # print(hotels_display)
+    return render_template('list.html', loc = loc, hotels = hotels_display)

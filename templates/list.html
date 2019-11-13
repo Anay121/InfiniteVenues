@@ -21,7 +21,7 @@
             <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#loc" aria-expanded="false" aria-controls="loc">Location</button>
             <div class="collapse" id="loc">
                 <div class="card card-body">
-                    <input class="m-1 form-control form-control-lg form-control-borderless" type="search" placeholder="Location">
+                    <input class="m-1 form-control form-control-lg form-control-borderless" type="search" placeholder="{{loc}}">
                 </div>
             </div>
             <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#price" aria-expanded="false" aria-controls="price">Price</button>
@@ -53,19 +53,66 @@
                     <span class="starrate float-right"><i class="fa fa-star" data-rating = 5></i> 5 Stars </span>
                 </div>
             </div>
-            <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#facility" aria-expanded="false" aria-controls="facility">Facilities</button>
+            <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#facility" aria-expanded="false" aria-controls="facility">Rooms</button>
             <div class="collapse" id="facility">
-                <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                <div class="card card-body ">
+                    <div class = 'form-check'>
+                    <input class="form-check-input ajax_thing" type="checkbox" value="Single" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Single
+                    </label>
+                    </div>
+                    <div class = 'form-check'>
+                    <input class="form-check-input ajax_thing" type="checkbox" value="Double" id="defaultCheck2">
+                    <label class="form-check-label" for="defaultCheck2">
+                        Double
+                    </label>
+                </div>
+                <div class = 'form-check'>
+                    <input class="form-check-input ajax_thing" type="checkbox" value="Quad" id="defaultCheck3">
+                    <label class="form-check-label" for="defaultCheck3">
+                        Quad
+                    </label>
+                </div>
+                <div class = 'form-check'>
+                    <input class="form-check-input ajax_thing" type="checkbox" value="Suite" id="defaultCheck4">
+                    <label class="form-check-label" for="defaultCheck4">
+                        Suite
+                    </label>
+                </div>
+                <div class = 'form-check'>
+                    <input class="form-check-input ajax_thing" type="checkbox" value="Luxury" id="defaultCheck5">
+                    <label class="form-check-label" for="defaultCheck5">
+                        Luxury
+                    </label>
+                </div>
+                <div class = 'form-check'>
+                    <input class="form-check-input ajax_thing" type="checkbox" value="Queen" id="defaultCheck6">
+                    <label class="form-check-label" for="defaultCheck6">
+                        Queen
+                    </label>
+                </div>
+                <div class = 'form-check'>
+                    <input class="form-check-input ajax_thing" type="checkbox" value="King" id="defaultCheck7">
+                    <label class="form-check-label" for="defaultCheck7">
+                        King
+                    </label>
+                </div>
+                <div class = 'form-check'>
+                    <input class="form-check-input ajax_thing" type="checkbox" value="Deluxe" id="defaultCheck8">
+                    <label class="form-check-label" for="defaultCheck8">
+                        Deluxe
+                    </label>
+                </div>
+                
                 </div>
             </div>
         </ul>
 
     </div>
 <div class="col-9 flex-container">
-{% for i in range(25) %}
-<div class="card flex-item" style="width: 20rem; max-width: 20rem; max-height: 30rem;">
+
+<!-- <div class="card flex-item" style="width: 20rem; max-width: 20rem; max-height: 30rem;">
   <img class="card-img-top" src="{{url_for('static', filename = 'bridge.jpg')}}" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
@@ -73,7 +120,23 @@
     <a href="#" class="btn btn-primary">More details</a>
     <a href="#" class="btn btn-primary">Book Now!</a>
   </div>
-</div>
+</div> -->
+
+{% for i in hotels %}
+<div class="card flex-item" style="width: 20rem; max-width: 20rem; max-height: 30rem;">
+    <img class="card-img-top" src="{{url_for('static', filename = 'bridge.jpg')}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title" style="max-height: 2.5em;overflow: auto;">{{i['hname']}}</h5>
+        <p class="card-text" style="max-height: 9em;overflow: auto;">
+            <b>Category</b>: {{i.subcat}}<br>
+            <b>Address</b>: {{i.address}}<br>
+            <b>Mobile</b>: {{i.mobile}} <br>
+            <b>Email</b>: {{i.email }}<br>
+        </p>
+        <a href="/hotel/{{ i['id'] }}" class="btn btn-primary">More details</a>
+        <a href="#" class="btn btn-primary">Book Now!</a>
+    </div>
+  </div>
 {% endfor %}
 </div>
 </div>

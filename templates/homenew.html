@@ -16,7 +16,7 @@
     </style>
 {% endblock head %}
 {% block content %}
-
+    <form action='/list' method='post'>
     <div class="container-fluid p-4 m-4" style="position: absolute; top: 10%; z-index: 999;">
         <div class="row justify-content-center">
             <div class="col-12 col-md-11 col-lg-10">
@@ -36,7 +36,7 @@
                         </div>
                         <!--end of col-->
                         <div class="col-auto">
-                            <button class="btn btn-lg btn-success">Search</button>
+                            <input type='submit' value="Submit" class="btn btn-lg btn-success">
                         </div>
                         <!--end of col-->
                     </div>
@@ -45,7 +45,7 @@
             <!--end of col-->
         </div>
     </div>
-
+    </form>
     <div class = 'col-md-5 font-effect-outline' style="color: white; line-height: 60px; position: absolute; top:50%; z-index: 999;left:30%; font-family: 'Coming Soon'; font-size: 3rem"> 
         <p> Travelling for <span class = 'changer'>Fun? </span>
         <br> We have a place for you!</p>
@@ -251,20 +251,6 @@
 
         </div>
     </div>
-
-    <!-- Section 4 -->
-    <!-- <div class="section-4-container section-container section-container-image-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col section-4 section-description wow fadeInLeftBig">
-                    <h2>Top Blogs</h2>
-                    <p>
-                        Confused where to go? Read the blogs and choose!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div> -->
 {% endblock content %}
 {% block jscripts %}
     <script src="static/javascript/wow.min.js"></script>
@@ -311,6 +297,5 @@
             $('.changer').text(changed[i%4])
             i++;
         }, 2000);
-
     </script>
 {% endblock jscripts %}

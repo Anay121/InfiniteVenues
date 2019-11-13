@@ -1,3 +1,4 @@
+------------------------hotels insert------------------
 import psycopg2, json
 
 conn = psycopg2.connect("dbname=InfiniteVenues user=postgres password=password")
@@ -19,7 +20,23 @@ with open('hotels', 'r') as f:
         cur.execute(a)
 conn.commit()
 
-Database creation
+--------h_and_r insert----------
+import psycopg2, random
+
+conn = psycopg2.connect("dbname=InfiniteVenues user=postgres password=password")
+cur = conn.cursor()
+
+a = list(range(8))
+cur.execute('select hid from hotels')
+x = cur.fetchall()
+x = [i[0] for i in x]
+# print(x)
+for i in x:
+    cur.execute(f'insert into h_and_r values({i}, {random.randint(1, 4)}, {random.randint(1, 40)})')
+    cur.execute(f'insert into h_and_r values({i}, {random.randint(5, 8)}, {random.randint(1, 30)})')
+conn.commit()
+
+Database creation--------------------------
 
 CREATE table users (
     user_id serial primary key,
@@ -44,3 +61,17 @@ create table hotels(
 	subcat varchar(30),
 	rooms integer
 );
+
+create table rooms(
+	rid serial primary key,
+	rtype varchar(30),
+	price integer
+);
+insert into rooms 
+values(1, 'single', 1, 1000), (2, 'double', 2, 1800), (3, 'quad', 4, 3200), (4, 'suite', 4, 5000), (5, 'luxury suite', 4, 7000), (6, 'queen', 3, 3750), (7, 'king', 3, 4000), (8, 'deluxe', 8, 10000)
+
+create table h_and_r(
+	hid integer references hotels(hid),
+	rid integer references rooms(rid),
+	number_rooms integer
+)
