@@ -21,7 +21,7 @@
             <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#loc" aria-expanded="false" aria-controls="loc">Location</button>
             <div class="collapse" id="loc">
                 <div class="card card-body">
-                    <input class="m-1 form-control form-control-lg form-control-borderless" type="search" placeholder="{{loc}}">
+                    <input class="m-1 form-control form-control-lg form-control-borderless" id = 'loc_ajax' type="search" placeholder="{{loc}}">
                 </div>
             </div>
             <button class="btn btn-primary list-group-item list-group-item-primary" type="button" data-toggle="collapse" data-target="#price" aria-expanded="false" aria-controls="price">Price</button>
@@ -110,18 +110,7 @@
         </ul>
 
     </div>
-<div class="col-9 flex-container">
-
-<!-- <div class="card flex-item" style="width: 20rem; max-width: 20rem; max-height: 30rem;">
-  <img class="card-img-top" src="{{url_for('static', filename = 'bridge.jpg')}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text" style="max-height: 9em;overflow: auto;">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's contentSome quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">More details</a>
-    <a href="#" class="btn btn-primary">Book Now!</a>
-  </div>
-</div> -->
-
+<div id = 'card-display' class="col-9 flex-container">
 {% for i in hotels %}
 <div class="card flex-item" style="width: 20rem; max-width: 20rem; max-height: 30rem;">
     <img class="card-img-top" src="{{url_for('static', filename = 'bridge.jpg')}}" alt="Card image cap">
@@ -182,7 +171,25 @@
             $(document.body).css('opacity', "0.4")
         });
     });
-
+$(function(){
+    $('#loc_ajax').on('keyup', function(){
+        loc = $('#loc_ajax')[0].value;
+        a = []
+        $('input:checkbox:checked').each(function(){
+            a.push(this.value)
+        });
+        data = JSON.stringify({'location':loc, 'rooms':a})
+        // console.log(data)
+        $.ajax({
+            method:'POST',
+            url: '/search_hotels',
+            data: data
+        }).done(function(x){
+            console.log(x);
+            $('#card-display').html(x['cards']);
+        });
+    });
+});
 </script>
 
 

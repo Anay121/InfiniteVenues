@@ -1,8 +1,9 @@
-from flask import Flask, render_template, url_for, request, redirect, flash, session
+from flask import Flask, render_template, url_for, request, redirect, flash, session, jsonify
 from models import RegistrationForm, LoginForm
 from flask_bcrypt import Bcrypt
-import os
+import os, json
 import psycopg2
+from bs4 import BeautifulSoup
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 bcrypt = Bcrypt(app)
@@ -118,3 +119,27 @@ def hotel_list():
         hotels_display.append(dict(zip(hotel_col, a_update)))
     # print(hotels_display)
     return render_template('list.html', loc = loc, hotels = hotels_display)
+@app.route('/search_hotels', methods = ['GET','POST'])
+def search_hotels():
+    s = request.get_data().decode('utf-8')
+    s = json.loads(s)
+    print(s)
+    location = s['location']
+    # print(location)
+    rooms = s['rooms']
+    print(f"select * from hotels where city like '%{location}%'")
+    cur.execute(f"select * from hotels where city like '%{location.capitalize()}%'")
+    a = cur.fetchall()
+    hotels_display = []
+    for i in range(len(a))[:20]:
+        a_update = [str(j) for j in a[i]]
+        hotels_display.append(dict(zip(hotel_col, a_update)))
+    # print(hotels_display)
+    soup = BeautifulSoup(render_template('list.html', loc = location, hotels = hotels_display), 'html.parser')
+    tag = soup.find('div', {'id':'card-display'})
+    print(tag)
+    # tag = tag.findChildren('div', recursive = True)
+    # print(tag)
+    return jsonify(cards = str(tag))
+
+
