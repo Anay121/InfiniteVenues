@@ -122,12 +122,13 @@
             <b>Mobile</b>: {{i.mobile}} <br>
             <b>Email</b>: {{i.email }}<br>
         </p>
+        <form action='/payment' id='myForm' method = 'post'>
         <a href="/hotel/{{ i['id'] }}" class="btn btn-primary">More details</a>
-        <a href="#" class="btn btn-primary">Book Now!</a>
+        <input class="btn btn-primary" onclick="$('#myForm').submit()" type='submit' name="{{i['id']}}" value="Book Now!">
+        </form>
     </div>
   </div>
 {% endfor %}
-</div>
 </div>
 
 </div>

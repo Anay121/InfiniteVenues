@@ -142,4 +142,11 @@ def search_hotels():
     # print(tag)
     return jsonify(cards = str(tag))
 
-
+@app.route('/payment', methods = ['GET','POST'])
+def payment():  
+    id = list(request.form)[0]
+    cur.execute(f"select rooms.rid, rtype, price, number_rooms from rooms, h_and_r where h_and_r.hid = {id} and h_and_r.rid=rooms.rid")
+    a = cur.fetchall()
+    a = {i[0]:list(i[1:]) for i in a}
+    print(a)
+    return render_template('payment.html', rooms = a)
